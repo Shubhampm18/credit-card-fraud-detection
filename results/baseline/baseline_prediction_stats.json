@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-10-10T16:18:14+00:00",
+  "reference_window_rows": 3000,
+  "reference_window_fraud_count": 6,
+  "predicted_fraud_count": 7,
+  "predicted_fraud_rate": 0.0023333333333333335,
+  "probability_mean": 0.0017666666666666668,
+  "probability_std": 0.03200565922180361,
+  "probability_min": 0.0,
+  "probability_max": 0.85,
+  "probability_median": 0.0,
+  "probability_p50": 0.0,
+  "probability_p90": 0.0,
+  "probability_p95": 0.0,
+  "probability_p99": 0.01,
+  "threshold": 0.21,
+  "decisions": {
+    "predicted_legit": 2993,
+    "predicted_fraud": 7
+  }
+}

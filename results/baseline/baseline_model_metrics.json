@@ -1,0 +1,115 @@
+{
+  "created_at_utc": "2026-10-10T14:27:14+00:00",
+  "model_type": "RandomForestClassifier",
+  "model_params": {
+    "n_estimators": 200,
+    "random_state": 42,
+    "class_weight": null
+  },
+  "random_state": 42,
+  "test_size": 0.3,
+  "train_rows": 3500,
+  "train_fraud_count": 6,
+  "training_time_ms": 1070.5283999996027,
+  "feature_names": [
+    "Time",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "decision_threshold": 0.21,
+  "threshold_selection": {
+    "threshold": 0.21,
+    "criterion": "max_fbeta_with_precision_at_least_0.5",
+    "cv_folds": 5,
+    "oof_precision": 0.8333333333333334,
+    "oof_recall": 0.8333333333333334,
+    "oof_f1": 0.8333333333333334,
+    "note": "Threshold chosen on out-of-fold predictions from the training split only; the test set is never used for tuning."
+  },
+  "metrics": {
+    "decision_threshold": 0.21,
+    "test_rows": 1500,
+    "test_fraud_count": 3,
+    "test_legit_count": 1497,
+    "precision": 0.5,
+    "recall": 0.3333333333333333,
+    "f1_score": 0.4,
+    "average_precision_pr_auc": 0.8055555555555556,
+    "roc_auc": 0.9995546648853263,
+    "confusion_matrix": {
+      "labels": [
+        0,
+        1
+      ],
+      "matrix": [
+        [
+          1496,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "true_negative": 1496,
+      "false_positive": 1,
+      "false_negative": 2,
+      "true_positive": 1
+    },
+    "probability_summary": {
+      "min": 0.0,
+      "max": 0.46,
+      "mean": 0.0013766666666666667,
+      "median": 0.0
+    },
+    "default_threshold_0_5": {
+      "predicted_fraud_count": 0,
+      "confusion_matrix": [
+        [
+          1497,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    }
+  },
+  "limitations": [
+    "Only 3 fraud cases in the test set: precision/recall/F1 have wide confidence intervals.",
+    "Only 6 fraud cases in the training split, so the model's raw probabilities are strongly shrunk toward 0 and the library default 0.5 threshold classifies nothing as fraud; a lower, cross-validated threshold is needed to act on the rankings.",
+    "A different random seed can move these metrics noticeably.",
+    "PR-AUC and ROC-AUC are more stable than threshold metrics here, but still rest on few positive examples."
+  ]
+}

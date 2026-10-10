@@ -1,0 +1,141 @@
+{
+  "created_at_utc": "2026-10-10T16:18:14+00:00",
+  "git_commit": null,
+  "model_type": "RandomForestClassifier",
+  "model_path": "models/random_forest.joblib",
+  "model_load_ms": 1734.5249000063632,
+  "model_metrics_file": "results/baseline/baseline_model_metrics.json",
+  "reference_window": {
+    "definition": "fixed random partition of the working sample (random_state=42); 60% of rows form the reference window, the remainder is the current pool",
+    "split_type": "fixed_random_partition",
+    "random_state": 42,
+    "rows": 3000,
+    "time_min": 23.0,
+    "time_max": 172703.0,
+    "fraud_count": 6
+  },
+  "feature_names": [
+    "Time",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "drift_features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "n_features": 30,
+  "source_sample": "data/creditcard_sample_5000.csv",
+  "sample_rows": 5000,
+  "split_batch_size": 500,
+  "caveats": [
+    "The reference window is a subset of the data the model was trained on, so baseline scores are optimistic relative to truly unseen data.",
+    "Local CPU measurements only; not cloud performance."
+  ],
+  "model_metrics_snapshot": {
+    "decision_threshold": 0.21,
+    "test_rows": 1500,
+    "test_fraud_count": 3,
+    "test_legit_count": 1497,
+    "precision": 0.5,
+    "recall": 0.3333333333333333,
+    "f1_score": 0.4,
+    "average_precision_pr_auc": 0.8055555555555556,
+    "roc_auc": 0.9995546648853263,
+    "confusion_matrix": {
+      "labels": [
+        0,
+        1
+      ],
+      "matrix": [
+        [
+          1496,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "true_negative": 1496,
+      "false_positive": 1,
+      "false_negative": 2,
+      "true_positive": 1
+    },
+    "probability_summary": {
+      "min": 0.0,
+      "max": 0.46,
+      "mean": 0.0013766666666666667,
+      "median": 0.0
+    },
+    "default_threshold_0_5": {
+      "predicted_fraud_count": 0,
+      "confusion_matrix": [
+        [
+          1497,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    }
+  }
+}

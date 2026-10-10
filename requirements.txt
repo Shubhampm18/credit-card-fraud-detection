@@ -1,0 +1,18 @@
+# Pinned ML stack. The trained model is a joblib pickle produced by
+# scikit-learn 1.7.2; these exact versions are what it was trained and tested
+# with, so pinning guarantees the container loads the same artifact correctly.
+numpy==2.2.6
+pandas==2.3.2
+scikit-learn==1.7.2
+scipy==1.15.3
+joblib==1.5.2
+matplotlib==3.10.9
+
+pytest>=7.4
+
+# API serving (phase 2). fastapi pulls in starlette + pydantic.
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# HTTP client for the API load test.
+httpx>=0.27

@@ -1,0 +1,51 @@
+# Keep the image small and free of training data / local noise.
+# The API needs only: src/, models/, results/baseline/, and the small sample.
+
+# --- version control and environments ---
+.git
+.gitignore
+.venv
+venv
+env
+env/
+
+# --- python caches and build output ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# --- test and tool caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- raw training data (NOT needed at inference time) ---
+creditcard.csv
+
+# --- experiment outputs that are not inference inputs ---
+results/monitoring/
+results/plots/
+results/sample_metadata.json
+
+# --- editors / OS / temp ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# --- docker / docs not needed in the image ---
+Dockerfile
+.dockerignore
+compose.yaml
+docker-compose.yml
+
+# --- tests are not required inside the runtime image ---
+tests/

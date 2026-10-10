@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-10-10T16:17:52+00:00",
+  "source_file": "creditcard.csv",
+  "source_rows": 284807,
+  "source_fraud_count": 492,
+  "sample_rows": 5000,
+  "sample_fraud_count": 9,
+  "sample_fraud_pct": 0.18,
+  "sampling_method": "stratified_on_target_full_dataset_then_sorted_by_time",
+  "random_state": 42,
+  "time_range_in_sample": [
+    23.0,
+    172703.0
+  ],
+  "target": "Class",
+  "n_features": 30,
+  "limitation": "Only 9 fraud cases in a 5000-row sample; per-class metrics are high-variance and a single test split can change them substantially."
+}

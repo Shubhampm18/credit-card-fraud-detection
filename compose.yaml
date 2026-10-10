@@ -1,0 +1,41 @@
+# Local development compose file for the fraud API.
+#
+# Purpose: start the API with the monitoring directory bind-mounted to the host,
+# so request/drift records persist across container restarts and removals.
+#
+# From the project root (PowerShell):
+#   New-Item -ItemType Directory -Force results\monitoring | Out-Null
+#   docker compose up --build
+#   docker compose down
+#
+# This is a local development convenience only, not a production deployment.
+
+services:
+  fraud-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fraud-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      FRAUD_PORT: "8000"
+      FRAUD_HOST: "0.0.0.0"
+      FRAUD_MONITORING_DIR: "/app/results/monitoring"
+      FRAUD_MODEL_PATH: "/app/models/random_forest.joblib"
+      FRAUD_MAX_BATCH_SIZE: "1000"
+      FRAUD_DRIFT_WINDOW_SIZE: "500"
+    volumes:
+      # Bind-mount host monitoring dir so records are not lost with the container.
+      - ./results/monitoring:/app/results/monitoring
+    healthcheck:
+      test:
+        - "CMD"
+        - "python"
+        - "-c"
+        - "import urllib.request,sys,os; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).status==200 else 1)"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    restart: unless-stopped
